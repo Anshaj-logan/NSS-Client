@@ -58,6 +58,8 @@ import Approve from '../../pages/Admin/Approve'
 import ProfileCoo from '../../pages/Admin/ProfileCoo'
 import Adsuggestionn from '../../pages/Admin/Adsuggestionn'
 import AdVol from '../../pages/Admin/AdVol'
+import Coordinator from '../../pages/Coordinator/Coordinator'
+import AllStudents from '../../pages/Coordinator/AllStudents'
 
 
 
@@ -71,6 +73,9 @@ const Mainrouter = () => {
            <Route path='/' element={<Home/>} />
            
            <Route path='/register' element={<Register/>} />
+
+           <Route path='/coordinator' element={<Coordinator/>} />
+           <Route path='/students' element={<AllStudents/>} />
            
            <Route path='/volunteer' element={<Volunteer/>} />
            <Route path='/student' element={<Student/>} />
