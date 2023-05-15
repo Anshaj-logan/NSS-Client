@@ -48,11 +48,11 @@ const NavCoordinator = () => {
                                    </ul>
                             </li>
                             <li>
-                                <Link to={'/'}>
+                                
                                     <a className="nav-link scrollto" style={{textDecoration:"none"}} href="#">
                                         Volunteers
                                     </a>
-                                </Link>
+                                
                             </li>
                             <li class="dropdown"><a href="#"><span>Activities</span> <i class="bi bi-chevron-right"></i></a>
                                 <ul>
