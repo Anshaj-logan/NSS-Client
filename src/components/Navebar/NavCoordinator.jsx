@@ -43,8 +43,8 @@ const NavCoordinator = () => {
                             </li>
                             <li class="dropdown"><a href="#" style={{textDecoration:"none"}}><span>Add Details</span> <i class="bi bi-chevron-right"></i></a>
                                 <ul>
-                                    <li><a href="#">Test Details</a></li>
-                                    <li><a href="#">Interview Details</a></li>
+                                    <li><a href="/addtestdetails">Test Details</a></li>
+                                    <li><a href="/addintdetails">Interview Details</a></li>
                                    </ul>
                             </li>
                             <li>

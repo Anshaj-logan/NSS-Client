@@ -112,6 +112,7 @@ const RegVo = () => {
     if(Object.keys(formErrors).length === 0 && isSubmit){
       axios.post('http://localhost:2000/api/register/volunteer',inputs).then((data)=>{
         console.log(data);
+        window.location.reload()
         // console.log(data.response.data.message);
         toast(data.data.message, {
           position: "bottom-center",

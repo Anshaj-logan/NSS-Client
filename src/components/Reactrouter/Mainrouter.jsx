@@ -60,6 +60,8 @@ import Adsuggestionn from '../../pages/Admin/Adsuggestionn'
 import AdVol from '../../pages/Admin/AdVol'
 import Coordinator from '../../pages/Coordinator/Coordinator'
 import AllStudents from '../../pages/Coordinator/AllStudents'
+import Testdetails from '../../pages/Coordinator/Testdetails'
+import Interviewdetails from '../../pages/Coordinator/Interviewdetails'
 
 
 
@@ -129,6 +131,10 @@ const Mainrouter = () => {
            <Route path='/adprofile' element={<ProfileCoo/>}/>
            <Route path='/adsuggestion' element={<Adsuggestionn/>}/>
            <Route path='/advolunteer' element={<AdVol/>}/>
+           <Route path='/addtestdetails' element={<Testdetails/>}/>
+           <Route path='/addintdetails' element={<Interviewdetails/>}/>
+
+
            </Routes>
     </div>
   )

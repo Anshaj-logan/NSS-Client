@@ -1,7 +1,21 @@
-import React from 'react';
-import { Link, useNavigate } from 'react-router-dom'
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 
 const ViewStudents = () => {
+  const [inputs, setInputs] = useState([]);
+  useEffect(() => {
+   
+    axios
+      .get(
+        ` http://localhost:2000/api/cod/view-students`
+      )
+      .then((response) => {
+        if (response.data.success === true) {
+          setInputs(response.data.data);
+        }
+      });
+  }, []);
+  console.log("data", inputs);
     return (
         <div>
         <div className='tile'>
@@ -15,42 +29,37 @@ const ViewStudents = () => {
     <thead>
       <tr>
         <th>Sl.No</th>
-        <th>Date</th>
-        <th>Roll no</th>
-        <th>Volunteer name</th>
+        <th>Name</th>
         <th>Course</th>
-        <th>Present/Absent</th>
+        <th>Acdamic Year</th>
+        <th>Contact Number</th>
+        {/* <th>Present/Absent</th> */}
         {/* <th>Instructions</th> */}
         {/* <th>Action</th> */}
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <td>1</td>
-        <td>21/4/22</td>
-        <td>34</td>
-        <td>Rahul</td>
-        <td>BCA</td>
-        <td>Present</td>
-        {/* <td>..</td> */}
-        {/* <td>
-          <button className="btn btn-primary" type="button">
-            Edit
-          </button>
-          <button className="btn btn-danger" type="button">
-            Delete
-          </button>
-        </td> */}
-      </tr>
+    {inputs.map((data,key)=>(
+                    <tr>
+                    <td>{key+1}</td>
+                    <td>{data.name}</td>
+                    {/* <td>{data.established}</td> */}
+                    <td>{data.course}</td>
+                    <td>{data.acdamic_year}</td>
+                    <td>{data.phone_no}</td>
+                    </tr>
+                    
+                    
+                     ))}
     </tbody>
   </table>
 
   </div>
-  <Link to={'/volunteer'}><a className="btn btn-secondary" href="">
+  {/* <Link to={'/volunteer'}><a className="btn btn-secondary" href="">
               <i className="fa fa-fw fa-lg fa-times-circle" />
               Cancel
             </a>
-            </Link>
+            </Link> */}
   </section>
 </div>
 </div>

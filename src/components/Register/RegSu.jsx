@@ -11,7 +11,7 @@ const RegSu = () => {
     
     
     email:"",
-   
+    name:"",
     acdamic_year:"",
     username: "",
     password: "",
@@ -30,9 +30,9 @@ const RegSu = () => {
 
   const validate = (values)=>{
     var error = {}
-    // if(!values.name){
-    //   error.name ="Enter Name"
-    // }
+    if(!values.name){
+      error.name ="Enter Name"
+    }
     if(!values.username){
       error.username ="Enter Username"
     }
@@ -71,9 +71,9 @@ const RegSu = () => {
     if(!values.acdamic_year){
       error.acdamic_year ="Enter Acadamic Year"
     }
-    if(!values.cnf_password){
-      error.cnf_password ="Enter Password"
-    }
+    // if(!values.cnf_password){
+    //   error.cnf_password ="Enter Password"
+    // }
    
     return error
   }
@@ -103,6 +103,7 @@ const RegSu = () => {
     if(Object.keys(formErrors).length === 0 && isSubmit){
       axios.post('http://localhost:2000/api/register/student',inputs).then((data)=>{
         console.log(data);
+        window.location.reload()
         // console.log(data.response.data.message);
         toast(data.data.message, {
           position: "bottom-center",
@@ -164,19 +165,19 @@ const RegSu = () => {
               <div className="row">
                 <div className="col-md-6 mb-4">
                   <div className="form-outline">
-                  <span style={{color:"red"}} > {formErrors.username? formErrors.username :""}</span>
+                  <span style={{color:"red"}} > {formErrors.name? formErrors.name :""}</span>
         <input
-        name="username"
-        value={inputs.username || ""}
+        name="name"
+        value={inputs.name || ""}
         onChange={setRegister} 
-        onClick={()=>{setformErrors({...formErrors,username:""})}}
+        onClick={()=>{setformErrors({...formErrors,name:""})}}
                       type="text"
                       id="form3Example1"
                       className="form-control"
                       
                     />
                     <label className="form-label" htmlFor="form3Example1">
-                     User Name
+                     Name
                     </label>
                   </div>
                 </div>
@@ -373,8 +374,26 @@ const RegSu = () => {
               <div className="row">
                 <div className="col-md-6 mb-4">
                   <div className="form-outline">
-                  <span style={{color:"red"}} > {formErrors.password? formErrors.password :""}</span>
+                  <span style={{color:"red"}} > {formErrors.username? formErrors.username :""}</span>
         <input
+        name="username"
+        value={inputs.username || ""}
+        onChange={setRegister} 
+        onClick={()=>{setformErrors({...formErrors,username:""})}}
+                      type="text"
+                      id="form3Example1"
+                      className="form-control"
+                      
+                    />
+                    <label className="form-label" htmlFor="form3Example1">
+                      User Name
+                    </label>
+                  </div>
+                </div>
+                <div className="col-md-6 mb-4">
+                  <div className="form-outline">
+                  <span style={{color:"red"}} > {formErrors.password? formErrors.password :""}</span>
+                  <input
         name="password"
         value={inputs.password || ""}
         onChange={setRegister} 
@@ -383,25 +402,8 @@ const RegSu = () => {
                       id="form3Example1"
                       className="form-control"
                     />
-                    <label className="form-label" htmlFor="form3Example1">
-                      Password
-                    </label>
-                  </div>
-                </div>
-                <div className="col-md-6 mb-4">
-                  <div className="form-outline">
-                  <span style={{color:"red"}} > {formErrors.cnf_password? formErrors.cnf_password :""}</span>
-        <input
-        name="cnf_password"
-        value={inputs.cnf_password || ""}
-        onChange={setRegister} 
-        onClick={()=>{setformErrors({...formErrors,cnf_password:""})}}
-                      type="password"
-                      id="form3Example2"
-                      className="form-control"
-                    />
                     <label className="form-label" htmlFor="form3Example2">
-                      Confirm Password
+                      Password
                     </label>
                   </div>
                 </div>
