@@ -45,7 +45,7 @@ const navigate = useNavigate()
             localStorage.setItem("name", response.data.username)
             localStorage.setItem("loginId", response.data.login_id)
             localStorage.setItem("role", response.data.role)
-            localStorage.setItem("cordinator_id", response.data.student_id)
+            localStorage.setItem("cordinator_id", response.data.co_id)
               sessionStorage.setItem("currentloggedin", response.data.name);
               navigate("/coordinator")
           }

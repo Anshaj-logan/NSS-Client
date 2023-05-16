@@ -1,105 +1,73 @@
-import React from 'react'
+
 import { Link } from 'react-router-dom'
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 
 const Test = () => {
+  const std_id = localStorage.getItem("std_id")
+  const [inputs, setInputs] = useState([]);
+  useEffect(() => {
+   
+    axios
+      .get(
+        ` http://localhost:2000/api/std/view-testdetails/${std_id}`
+      )
+      .then((response) => {
+        if (response.data.success === true) {
+          setInputs(response.data.data);
+        }
+      });
+  }, []);
+  console.log("data", inputs);
   return (
     <div>
-       <div className="tile">
-  {/* <h3 className="tile-title">Profile</h3> */}
-  
-  <div className="tile-body">
-    
-    <section style={{ backgroundColor: "#eee" }}>
+        <div className='tile'>
+        <div className="tile-body">
+
+        <section style={{ backgroundColor: "#eee" }}>
       <div className="container py-5">
-        
-        <h3 className="tile-title">Test Details</h3>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <div className="row">
+      <h3 className="tile-title">All Students</h3>
 
-          {/* <div className="col-lg-8"> */}
-            <div className="card mb-4">
-              <div className="card-body">
-                <div className="row">
-                  <div className="col-sm-3">
-                    <p className="mb-0">Mode</p>
-                  </div>
-                  <div className="col-sm-9">
-                    <p className="text-muted mb-0">Test</p>
-                  </div>
-                </div>
-                <hr />
-                <div className="row">
-                  <div className="col-sm-3">
-                    <p className="mb-0">Test Link</p>
-                  </div>
-                  <div className="col-sm-9">
-                    <p className=" mb-0">
-                      Link
-                    </p>
-                  </div>
-                </div>
-                <hr />
-                <div className="row">
-                  <div className="col-sm-3">
-                    <p className="mb-0">Student Details</p>
-                  </div>
-                  <div className="col-sm-9">
-                    <p className="mb-0">
-                      file
-                    </p>
-                  </div>
-                </div>
-                <hr />
-                <div className="row">
-                  <div className="col-sm-3">
-                    <p className="mb-0">Test Date and Time</p>
-                  </div>
-                  <div className="col-sm-9">
-                    <p className="text-muted mb-0">
-                      20/6/23 10:00 am
-                    </p>
-                  </div>
-                </div>
-                <hr />
-                <div className="row">
-                  <div className="col-sm-3">
-                    <p className="mb-0">Instructions</p>
-                  </div>
-                  <div className="col-sm-9">
-                    <p className="text-muted mb-0">
-                      instruction1
-                      instruction2
-                    </p>
-                  </div>
-                </div>
-                <hr />
-                <div className="row">
-                  <div className="col-sm-3">
-                    <p className="mb-0">Contact Number</p>
-                  </div>
-                  <div className="col-sm-9">
-                    <p className="text-muted mb-0">9867457345</p>
-                  </div>
-                </div>
+  <table className="table">
+    <thead>
+      <tr>
+        <th>Sl.No</th>
+        <th>date</th>
+        <th>time</th>
+        <th>link</th>
+        <th>mark</th>
+        <th>Instruction</th>
+        {/* <th>Present/Absent</th> */}
+        {/* <th>Instructions</th> */}
+        {/* <th>Action</th> */}
+      </tr>
+    </thead>
+    <tbody>
+    {inputs.map((data,key)=>(
+                    <tr>
+                    <td>{key+1}</td>
+                    <td>{data.date}</td>
+                    <td>{data.time}</td>
+                    <td>{data.link}</td>
+                    <td>{data.mark}</td>
+                    <td>{data.instructions}</td>
+                    </tr>
+                    
+                    
+                     ))}
+    </tbody>
+  </table>
 
-
-
-              </div>
-            </div>
-          {/* </div> */}
-        </div>
-      
-        <Link to={'/student'}><a className="btn btn-secondary" href="">
+  </div>
+  {/* <Link to={'/volunteer'}><a className="btn btn-secondary" href="">
               <i className="fa fa-fw fa-lg fa-times-circle" />
               Cancel
             </a>
-            </Link>
-      </div>
-    </section>
-  </div>
+            </Link> */}
+  </section>
+</div>
+</div>
 
-</div> 
     </div>
   )
 }
