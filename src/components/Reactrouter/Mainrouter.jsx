@@ -62,6 +62,11 @@ import Coordinator from '../../pages/Coordinator/Coordinator'
 import AllStudents from '../../pages/Coordinator/AllStudents'
 import Testdetails from '../../pages/Coordinator/Testdetails'
 import Interviewdetails from '../../pages/Coordinator/Interviewdetails'
+import AddAttentence from '../../pages/Coordinator/AddAttentence'
+import AddVolgrp from '../../pages/Coordinator/AddVolgrp'
+import AddVolToGrp from '../../pages/Coordinator/AddVolToGrp'
+import AssignGroupActivity from '../../pages/Coordinator/AssignGroupActivity'
+import ViewAssignGroupActivity from '../../pages/Coordinator/ViewAssignGroupActivity'
 
 
 
@@ -133,6 +138,11 @@ const Mainrouter = () => {
            <Route path='/advolunteer' element={<AdVol/>}/>
            <Route path='/addtestdetails' element={<Testdetails/>}/>
            <Route path='/addintdetails' element={<Interviewdetails/>}/>
+           <Route path='/addvolattentence' element={<AddAttentence/>}/>
+           <Route path='/addvolgrp' element={<AddVolgrp/>}/>
+           <Route path='/addvoltogrp' element={<AddVolToGrp/>}/>
+           <Route path='/assigngrp' element={<AssignGroupActivity/>}/>
+           <Route path='/viewgrpactivity' element={<ViewAssignGroupActivity/>}/>
 
 
            </Routes>

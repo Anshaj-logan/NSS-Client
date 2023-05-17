@@ -47,17 +47,17 @@ const NavCoordinator = () => {
                                     <li><a href="/addintdetails">Interview Details</a></li>
                                    </ul>
                             </li>
-                            <li>
-                                
-                                    <a className="nav-link scrollto" style={{textDecoration:"none"}} href="#">
-                                        Volunteers
-                                    </a>
-                                
+                            <li class="dropdown"><a href="#"><span>Volunteer</span> <i class="bi bi-chevron-right"></i></a>
+                                <ul>
+                                    <li><a href="/addvolattentence">Add Attentence</a></li>
+                                    <li><a href="/addvolgrp">Create A Group</a></li>
+                                    <li><a href="/addvoltogrp">Add to Group</a></li>
+                                   </ul>
                             </li>
                             <li class="dropdown"><a href="#"><span>Activities</span> <i class="bi bi-chevron-right"></i></a>
                                 <ul>
-                                    <li><a href="#">Asign Group Activity</a></li>
-                                    <li><a href="#">View Group Activity</a></li>
+                                    <li><a href="/assigngrp">Asign Group Activity</a></li>
+                                    <li><a href="/viewgrpactivity">View Group Activity</a></li>
                                    </ul>
                             </li>
                             <li class="dropdown"><a href="#"><span>Individual Activities</span> <i class="bi bi-chevron-right"></i></a>

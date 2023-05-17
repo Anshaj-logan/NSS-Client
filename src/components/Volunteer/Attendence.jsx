@@ -1,7 +1,24 @@
-import React from 'react'
 import { Link } from 'react-router-dom'
+import axios from "axios";
+import React, { useEffect, useState } from "react";
+
 
 const Attendence = () => {
+  const vol_id = localStorage.getItem("vol_id")
+  const [inputs, setInputs] = useState([]);
+  useEffect(() => {
+   
+    axios
+      .get(
+        ` http://localhost:2000/api/vol/view-attentence/${vol_id}`
+      )
+      .then((response) => {
+        if (response.data.success === true) {
+          setInputs(response.data.data);
+        }
+      });
+  }, []);
+  console.log("data", inputs);
   return (
     <div>
         <div className='tile'>
@@ -16,32 +33,23 @@ const Attendence = () => {
       <tr>
         <th>Sl.No</th>
         <th>Date</th>
-        <th>Roll no</th>
-        <th>Volunteer name</th>
-        <th>Course</th>
-        <th>Present/Absent</th>
+        <th>status</th>
+        
         {/* <th>Instructions</th> */}
         {/* <th>Action</th> */}
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <td>1</td>
-        <td>21/4/22</td>
-        <td>34</td>
-        <td>Rahul</td>
-        <td>BCA</td>
-        <td>Present</td>
-        {/* <td>..</td> */}
-        {/* <td>
-          <button className="btn btn-primary" type="button">
-            Edit
-          </button>
-          <button className="btn btn-danger" type="button">
-            Delete
-          </button>
-        </td> */}
-      </tr>
+    {inputs.map((data,key)=>(
+                    <tr>
+                    <td>{key+1}</td>
+                    <td>{data.date}</td>
+                    <td>{data.attentence}</td>
+                  
+                    </tr>
+                    
+                    
+                     ))}
     </tbody>
   </table>
 
